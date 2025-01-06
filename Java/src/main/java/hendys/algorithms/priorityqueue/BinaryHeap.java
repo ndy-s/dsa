@@ -1,4 +1,4 @@
-package hendys.algorithms.PriorityQueue;
+package hendys.algorithms.priorityqueue;
 
 import java.util.ArrayList;
 import java.util.Collection;

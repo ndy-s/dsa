@@ -1,4 +1,4 @@
-package hendys.algorithms.Stack;
+package hendys.algorithms.stack;
 
 public interface Stack<T> {
     // return the number of elements in the stack

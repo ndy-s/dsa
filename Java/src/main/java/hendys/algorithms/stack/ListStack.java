@@ -1,4 +1,4 @@
-package hendys.algorithms.Stack;
+package hendys.algorithms.stack;
 
 public class ListStack<T> implements Iterable<T>, Stack<T> {
     private java.util.LinkedList<T> list = new java.util.LinkedList<T>();

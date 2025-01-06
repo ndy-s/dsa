@@ -1,4 +1,4 @@
-package hendys.algorithms.Queue;
+package hendys.algorithms.queue;
 
 public class LinkedQueue<T> implements Iterable<T>, Queue<T> {
 

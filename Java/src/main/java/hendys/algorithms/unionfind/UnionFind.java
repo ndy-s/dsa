@@ -1,4 +1,4 @@
-package hendys.algorithms.UnionFind;
+package hendys.algorithms.unionfind;
 
 public class UnionFind {
     // The number of elements in this union find

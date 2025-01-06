@@ -1,6 +1,6 @@
-package hendys.algorithms.LinkedList;
+package hendys.algorithms.linkedlist;
 
-public class DoublyLinkedList<T> implements Iterable<T> {
+public class SinglyLinkedList<T> implements Iterable<T> {
     private int size = 0;
     private Node<T> head = null;
     private Node<T> tail = null;
@@ -8,11 +8,10 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     // Internal node class to represent data
     private static class Node<T> {
         private T data;
-        private Node<T> prev, next;
+        private Node<T> next;
 
-        public Node(T data, Node<T> prev, Node<T> next) {
+        public Node(T data, Node<T> next) {
             this.data = data;
-            this.prev = prev;
             this.next = next;
         }
 
@@ -27,11 +26,11 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         Node<T> trav = head;
         while (trav != null) {
             Node<T> next = trav.next;
-            trav.prev = trav.next = null;
+            trav.next = null;
             trav.data = null;
             trav = next;
         }
-        head = tail = null;
+        head = tail = trav = null;
         size = 0;
     }
 
@@ -53,9 +52,9 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     // Add a node to the tail of the linked list, O(1)
     public void addLast(T elem) {
         if (isEmpty()) {
-            head = tail = new Node<T>(elem, null, null);
+            head = tail = new Node<>(elem, null);
         } else {
-            tail.next = new Node<T>(elem, tail, null);
+            tail.next = new Node<>(elem, null);
             tail = tail.next;
         }
         size++;
@@ -64,10 +63,9 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     // Add an element to the beginning of this linked list, O(1)
     public void addFirst(T elem) {
         if (isEmpty()) {
-            head = tail = new Node<T>(elem, null, null);
+            head = tail = new Node<>(elem, null);
         } else {
-            head.prev = new Node<T>(elem, null, head);
-            head = head.prev;
+            head = new Node<>(elem, head);
         }
         size++;
     }
@@ -91,8 +89,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         for (int i = 0; i < index - 1; i++) {
             temp = temp.next;
         }
-        Node<T> newNode = new Node<>(data, temp, temp.next);
-        temp.next.prev = newNode;
+        Node<T> newNode = new Node<>(data, temp.next);
         temp.next = newNode;
 
         size++;
@@ -115,8 +112,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         // Can't remove data from an empty list
         if (isEmpty()) throw new RuntimeException("Empty list");
 
-        // Extract the data at the head and move
-        // the head pointer forwards one node
+        // Extract the data at the head and move the head pointer forward one node
         T data = head.data;
         head = head.next;
         --size;
@@ -124,87 +120,76 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         // If the list is empty set the tail to null
         if (isEmpty()) tail = null;
 
-            // Do a memory cleanup of the previous node
-        else head.prev = null;
-
         // Return the data that was at the first node we just removed
         return data;
     }
 
-    // Remove the last value at the tail of the linked list, O(1)
+    // Remove the last value at the tail of the linked list, O(n)
     public T removeLast() {
         // Can't remove data from an empty list
         if (isEmpty()) throw new RuntimeException("Empty list");
 
-        // Extract the data at the tail and move
-        // the tail pointer backwards one node
+        // If there's only one element
+        if (size == 1) {
+            return removeFirst();
+        }
+
+        // Traverse the list to find the second last node
+        Node<T> trav = head;
+        while (trav.next != tail) {
+            trav = trav.next;
+        }
+
         T data = tail.data;
-        tail = tail.prev;
+        tail = trav;
+        tail.next = null;
         --size;
 
-        // If the list is now empty set the head to null
-        if (isEmpty()) head = null;
-
-            // Do a memory clean of the node that was just removed
-        else tail.next = null;
-
-        // Return the data that was in the last node we just removed
         return data;
     }
 
-    // Remove an arbitrary node from the linked list, O(1)
+    // Remove an arbitrary node from the linked list, O(n)
     private T remove(Node<T> node) {
-        // If the node to remove is somewhere either at the
-        // head or the tail handle those independently
-        if (node.prev == null) return removeFirst();
-        if (node.next == null) return removeLast();
+        if (node == head) return removeFirst();
+        if (node == tail) return removeLast();
 
-        // Make the pointers of adjacent nodes skip over 'node'
-        node.next.prev = node.prev;
-        node.prev.next = node.next;
+        Node<T> trav = head;
+        while (trav.next != node) {
+            trav = trav.next;
+        }
 
-        // Temporarily store the data we want to return
+        trav.next = node.next;
         T data = node.data;
 
-        // Memory cleanup
         node.data = null;
-        node = node.prev = node.next = null;
+        node.next = null;
 
         --size;
 
-        // Return the data in the node we just removed
         return data;
     }
 
     // Remove a node at a particular index, O(n)
     public T removeAt(int index) {
-        // Make sure the index provided is valid
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException();
         }
 
-        int i;
-        Node<T> trav;
+        if (index == 0) return removeFirst();
+        if (index == size - 1) return removeLast();
 
-        // Search from the front of the list
-        if (index < size / 2) {
-            for (i = 0, trav = head; i != index; i++) {
-                trav = trav.next;
-            }
-            // Search from the back of the list
-        } else {
-            for (i = size - 1, trav = tail; i != index; i--) {
-                trav = trav.prev;
-            }
+        Node<T> trav = head;
+        for (int i = 0; i < index - 1; i++) {
+            trav = trav.next;
         }
-        return remove(trav);
+
+        return remove(trav.next);
     }
 
     // Remove a particular value in the linked list, O(n)
     public boolean remove(Object obj) {
         Node<T> trav = head;
 
-        // Support searching for null
         if (obj == null) {
             for (trav = head; trav != null; trav = trav.next) {
                 if (trav.data == null) {
@@ -212,7 +197,6 @@ public class DoublyLinkedList<T> implements Iterable<T> {
                     return true;
                 }
             }
-            // Search for non null object
         } else {
             for (trav = head; trav != null; trav = trav.next) {
                 if (obj.equals(trav.data)) {
@@ -229,14 +213,12 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         int index = 0;
         Node<T> trav = head;
 
-        // Support searching for null
         if (obj == null) {
             for (; trav != null; trav = trav.next, index++) {
                 if (trav.data == null) {
                     return index;
                 }
             }
-            // Search for non null object
         } else {
             for (; trav != null; trav = trav.next, index++) {
                 if (obj.equals(trav.data)) {
@@ -247,7 +229,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         return -1;
     }
 
-    // Check is a value is contained within the linked list
+    // Check if a value is contained within the linked list
     public boolean contains(Object obj) {
         return indexOf(obj) != -1;
     }

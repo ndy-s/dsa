@@ -1,6 +1,4 @@
-package hendys.algorithms.Queue;
-
-import java.util.Arrays;
+package hendys.algorithms.queue;
 
 public class ArrayQueue<T> implements Queue<T> {
     private Object[] data;

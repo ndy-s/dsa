@@ -1,4 +1,4 @@
-package hendys.algorithms.Queue;
+package hendys.algorithms.queue;
 
 public interface Queue<T> {
     public void offer(T elem);

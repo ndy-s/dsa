@@ -1,4 +1,4 @@
-package hendys.algorithms.Stack;
+package hendys.algorithms.stack;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
