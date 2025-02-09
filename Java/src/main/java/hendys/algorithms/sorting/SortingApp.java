@@ -13,5 +13,10 @@ public class SortingApp {
         var selectionSort = new SelectionSort();
         selectionSort.sort(selectionSortNumbers);
         System.out.println("Selection Sort: " + Arrays.toString(selectionSortNumbers));
+
+        int[] insertionSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var insertionSort = new InsertionSort();
+        insertionSort.sort(insertionSortNumbers);
+        System.out.println("Insertion Sort: " + Arrays.toString(insertionSortNumbers));
     }
 }
