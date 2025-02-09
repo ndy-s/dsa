@@ -1,22 +1,18 @@
 package hendys.algorithms.sorting;
 
 // Time complexity O(n^2)
-public class BubbleSort {
+public class SelectionSort {
     public void sort(int[] array) {
-        boolean isSorted;
         for (var i = 0; i < array.length; i++) {
-            isSorted = true;
+            var minIndex = i;
 
-            for (var j = 1; j < array.length - i; j++) {
-                if (array[j] < array[j - 1]) {
-                    swap(array, j, j - 1);
-                    isSorted = false;
+            for (var j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
                 }
             }
 
-            if (isSorted) {
-                return;
-            }
+            swap(array, minIndex, i);
         }
     }
 

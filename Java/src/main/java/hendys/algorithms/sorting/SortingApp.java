@@ -4,9 +4,14 @@ import java.util.Arrays;
 
 public class SortingApp {
     public static void main(String[] args) {
-        int[] numbers = { 7, 3, 1, 4, 6, 2, 3 };
-        var sorter = new BubbleSort();
-        sorter.sort(numbers);
-        System.out.println("Buble Sort: " + Arrays.toString(numbers));
+        int[] bubbleSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var bubbleSort = new BubbleSort();
+        bubbleSort.sort(bubbleSortNumbers);
+        System.out.println("Bubble Sort: " + Arrays.toString(bubbleSortNumbers));
+
+        int[] selectionSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var selectionSort = new SelectionSort();
+        selectionSort.sort(selectionSortNumbers);
+        System.out.println("Selection Sort: " + Arrays.toString(selectionSortNumbers));
     }
 }
