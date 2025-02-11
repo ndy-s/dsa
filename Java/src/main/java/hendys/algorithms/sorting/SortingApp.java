@@ -18,5 +18,10 @@ public class SortingApp {
         var insertionSort = new InsertionSort();
         insertionSort.sort(insertionSortNumbers);
         System.out.println("Insertion Sort: " + Arrays.toString(insertionSortNumbers));
+
+        int[] mergeSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var mergeSort = new MergeSort();
+        mergeSort.sort(mergeSortNumbers);
+        System.out.println("Merge Sort: " + Arrays.toString(mergeSortNumbers));
     }
 }
