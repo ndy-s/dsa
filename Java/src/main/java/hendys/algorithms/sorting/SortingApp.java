@@ -23,5 +23,10 @@ public class SortingApp {
         var mergeSort = new MergeSort();
         mergeSort.sort(mergeSortNumbers);
         System.out.println("Merge Sort: " + Arrays.toString(mergeSortNumbers));
+
+        int[] quickSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var quickSort = new QuickSort();
+        quickSort.sort(quickSortNumbers);
+        System.out.println("Quick Sort: " + Arrays.toString(quickSortNumbers));
     }
 }
