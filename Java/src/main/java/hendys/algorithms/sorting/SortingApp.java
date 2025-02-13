@@ -28,5 +28,10 @@ public class SortingApp {
         var quickSort = new QuickSort();
         quickSort.sort(quickSortNumbers);
         System.out.println("Quick Sort: " + Arrays.toString(quickSortNumbers));
+
+        int[] countingSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
+        var countingSort = new CountingSort();
+        countingSort.sort(countingSortNumbers, 7);
+        System.out.println("Counting Sort: " + Arrays.toString(countingSortNumbers));
     }
 }
