@@ -22,6 +22,8 @@ public class SearchApp {
         var binaryIndex = search.binarySearch(numbersCopy, 7);
         System.out.println("Binary Search Index: " + binaryIndex);
 
-
+        // Ternary search (recursive)
+        var ternaryIndex = search.ternarySearch(numbersCopy, 3);
+        System.out.println("Ternary Search Index: " + ternaryIndex);
     }
 }
