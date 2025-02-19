@@ -13,6 +13,7 @@ hendys/algorithms/searching/LinearSearch.class
 hendys/datastructures/linkedlist/SinglyLinkedList.class
 hendys/datastructures/dynamicarray/IntArray.class
 hendys/algorithms/sorting/MergeSort.class
+hendys/algorithms/stringmanipulation/ReverseStringApp.class
 hendys/algorithms/App.class
 hendys/datastructures/linkedlist/DoublyLinkedList$Node.class
 hendys/algorithms/searching/ExponentialSearch.class
