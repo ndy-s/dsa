@@ -66,7 +66,7 @@ public class BinaryHeap<T extends Comparable<T>> {
     // queue is empty null is returned.
     public T peek() {
         if (isEmpty()) return null;
-        return heap.getFirst();
+        return heap.get(0);
     }
 
     // Removes the root of the heap, O(log(n))
