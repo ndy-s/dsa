@@ -1,5 +1,7 @@
 package hendys.algorithms.searching;
 
+import hendys.algorithms.JumpSearch;
+
 import java.util.Arrays;
 
 public class SearchApp {
@@ -27,5 +29,10 @@ public class SearchApp {
         TernarySearch ternarySearch = new TernarySearch();
         int ternaryIndex = ternarySearch.search(numbersCopy, 3);
         System.out.println("Ternary Search Index: " + ternaryIndex);
+
+        // Jump search
+        JumpSearch jumpSearch = new JumpSearch();
+        int jumpIndex = jumpSearch.search(numbersCopy, 7);
+        System.out.println("Jump Search Index: " + jumpIndex);
     }
 }
