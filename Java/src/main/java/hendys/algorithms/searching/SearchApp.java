@@ -34,5 +34,10 @@ public class SearchApp {
         JumpSearch jumpSearch = new JumpSearch();
         int jumpIndex = jumpSearch.search(numbersCopy, 7);
         System.out.println("Jump Search Index: " + jumpIndex);
+
+        // Exponential search
+        ExponentialSearch exponentialSearch = new ExponentialSearch();
+        int exponentialIndex = exponentialSearch.search(numbersCopy, 3);
+        System.out.println("Exponential Search Index: " + exponentialIndex);
     }
 }
