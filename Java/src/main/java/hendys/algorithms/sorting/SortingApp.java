@@ -35,7 +35,7 @@ public class SortingApp {
         System.out.println("Counting Sort: " + Arrays.toString(countingSortNumbers));
 
         int[] bucketSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
-        var bucketSort = new BuckerSort();
+        var bucketSort = new BucketSort();
         bucketSort.sort(bucketSortNumbers, 3);
         System.out.println("Bucket Sort: " + Arrays.toString(bucketSortNumbers));
     }

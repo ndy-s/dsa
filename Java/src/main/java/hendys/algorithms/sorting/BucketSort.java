@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BuckerSort {
+public class BucketSort {
     public void sort(int[] array, int numberOfBuckets) {
         var i = 0;
         for (var bucket: createBuckets(array, numberOfBuckets)) {
