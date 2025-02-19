@@ -1,4 +1,4 @@
-package hendys.algorithms;
+package hendys.algorithms.searching;
 
 public class JumpSearch {
 

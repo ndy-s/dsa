@@ -1,7 +1,5 @@
 package hendys.algorithms.searching;
 
-import hendys.algorithms.JumpSearch;
-
 import java.util.Arrays;
 
 public class SearchApp {
