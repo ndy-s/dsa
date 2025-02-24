@@ -49,5 +49,12 @@ public class BinaryTreesApp {
         System.out.println("Traverse Level Order");
         tree.traverseLevelOrder();
 
+        System.out.println("Size of BST: " + tree.size());
+        System.out.println("Count leaves of BST: " + tree.countLeaves());
+        System.out.println("Max value of BST: " + tree.max());
+        System.out.println("Is BST contains: " + tree2.contains(10));
+        System.out.println("Are siblings?: " + tree2.areSibling(6, 1));
+        System.out.println("Get ancestors: " + tree2.getAncestors(10));
+
     }
 }

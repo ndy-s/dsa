@@ -1,6 +1,7 @@
 package hendys.datastructures.binarytrees;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tree {
     private class Node {
@@ -211,4 +212,93 @@ public class Tree {
             }
         }
     }
+
+    public int size() {
+        return size(root);
+    }
+
+    private int size(Node root) {
+        if (root == null) return 0;
+        return 1 + size(root.leftChild) + size(root.rightChild);
+    }
+
+    public int countLeaves() {
+        return countLeaves(root);
+    }
+
+    private int countLeaves(Node root) {
+        if (root == null) return 0;
+        if (root.leftChild == null && root.rightChild == null) return 1;
+
+        return countLeaves(root.leftChild) + countLeaves(root.rightChild);
+    }
+
+    public int max() {
+        return max(root);
+    }
+
+    private int max(Node root) {
+        if (root == null) return -1;
+        if (isLeaf(root)) return root.value;
+
+        int left = max(root.leftChild);
+        int right = max(root.rightChild);
+
+        return Math.max(Math.max(left, right), root.value);
+    }
+
+    public boolean contains(int value) {
+        return contains(root, value);
+    }
+
+    private boolean contains(Node root, int value) {
+        if (root == null) return false;
+
+        if (root.value == value) return true;
+
+        if (value < root.value) {
+            return contains(root.leftChild, value);
+        }
+
+        return contains(root.rightChild, value);
+    }
+
+    public boolean areSibling(int value1, int value2) {
+        return areSibling(root, value1, value2);
+    }
+
+    private boolean areSibling(Node root, int value1, int value2) {
+        if (root == null) return false; // Base case: empty tree
+
+        if (root.leftChild != null && root.rightChild != null) {
+            if ((root.leftChild.value == value1 && root.rightChild.value == value2) ||
+                    (root.leftChild.value == value2 && root.rightChild.value == value1)) {
+                return true;
+            }
+        }
+
+        // Recursively check left and right subtrees
+        return areSibling(root.leftChild, value1, value2) ||
+                areSibling(root.rightChild, value1, value2);
+    }
+
+    public ArrayList<Integer> getAncestors(int value) {
+        ArrayList<Integer> list = new ArrayList<>();
+        findAncestors(root, value, list);
+        return list;
+    }
+
+    private boolean findAncestors(Node root, int value, ArrayList<Integer> list) {
+        if (root == null) return false;
+        if (root.value == value) return true;
+
+        if (findAncestors(root.leftChild, value, list) ||
+                findAncestors(root.rightChild, value, list)) {
+            list.add(root.value);
+            return true;
+        }
+
+        return false;
+    }
 }
+
