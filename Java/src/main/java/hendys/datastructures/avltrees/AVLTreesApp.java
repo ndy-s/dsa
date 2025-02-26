@@ -7,5 +7,8 @@ public class AVLTreesApp {
         tree.insert(10);
         tree.insert(20);
         tree.insert(30);
+
+        System.out.println("Is AVL Tree balanced? " + tree.isBalanced());
+        System.out.println("Is AVL Tree perfect? " + tree.isPerfect());
     }
 }

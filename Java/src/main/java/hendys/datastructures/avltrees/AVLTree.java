@@ -81,6 +81,36 @@ public class AVLTree {
         return newRoot;
     }
 
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(AVLNode node) {
+        if (node == null) return true;
+
+        if (Math.abs(balanceFactor(node)) > 1) {
+            return false;
+        }
+
+        return isBalanced(node.leftChild) && isBalanced(node.rightChild);
+    }
+
+    public boolean isPerfect() {
+        return isPerfect(root);
+    }
+
+    private boolean isPerfect(AVLNode node) {
+        int height = height(node);
+        int size = size(node);
+
+        return size == (int) Math.pow(2, height + 1) - 1;
+    }
+
+    private int size(AVLNode root) {
+        if (root == null) return 0;
+        return 1 + size(root.leftChild) + size(root.rightChild);
+    }
+
     private void setHeight(AVLNode node) {
         node.height = Math.max(height(node.leftChild), height(node.rightChild)) + 1;
     }
