@@ -2,9 +2,10 @@ package hendys.datastructures.avltrees;
 
 public class AVLTree {
     private class AVLNode {
-        int value;
-        AVLNode leftChild;
-        AVLNode rightChild;
+        private int value;
+        private int height;
+        private AVLNode leftChild;
+        private AVLNode rightChild;
 
         public AVLNode(int value) {
             this.value = value;
@@ -33,6 +34,70 @@ public class AVLTree {
             root.rightChild = insert(root.rightChild, value);
         }
 
+        setHeight(root);
+
+        return balance(root);
+    }
+
+    private AVLNode balance(AVLNode root) {
+        if (isLeftHeavy(root)) {
+            if (balanceFactor(root.leftChild) < 0) {
+                root.leftChild = rotateLeft(root.leftChild);
+            }
+
+            return rotateRight(root);
+        } else if (isRightHeavy(root)) {
+            if (balanceFactor(root.rightChild) > 0) {
+                root.rightChild = rotateRight(root.rightChild);
+            }
+
+            return rotateLeft(root);
+        }
+
         return root;
+    }
+
+    private AVLNode rotateLeft(AVLNode root) {
+        AVLNode newRoot = root.rightChild;
+
+        root.rightChild = newRoot.leftChild;
+        newRoot.leftChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+
+    private AVLNode rotateRight(AVLNode root) {
+        AVLNode newRoot = root.leftChild;
+
+        root.leftChild = newRoot.rightChild;
+        newRoot.rightChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot;
+    }
+
+    private void setHeight(AVLNode node) {
+        node.height = Math.max(height(node.leftChild), height(node.rightChild)) + 1;
+    }
+
+    private boolean isLeftHeavy(AVLNode node) {
+        return balanceFactor(node) > 1;
+    }
+
+    private boolean isRightHeavy(AVLNode node) {
+        return balanceFactor(node) < -1;
+    }
+
+    private int balanceFactor(AVLNode node) {
+        return (node == null) ? 0 : height(node.leftChild) - height(node.rightChild);
+    }
+
+    private int height(AVLNode node) {
+        return (node == null) ? -1 : node.height;
     }
 }

@@ -1,6 +1,6 @@
 package hendys.datastructures.avltrees;
 
-public class AvlTreesApp {
+public class AVLTreesApp {
     public static void main(String[] args) {
         var tree = new AVLTree();
 
