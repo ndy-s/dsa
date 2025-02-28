@@ -18,6 +18,10 @@ public class Main {
 
         System.out.println(Arrays.toString(numbers));
 
+        // heapify algorithm
+        int[] heapifyNumbers = { 5, 3, 8, 4, 1, 2 };
 
+        MaxHeap.heapify(heapifyNumbers);
+        System.out.println(Arrays.toString(heapifyNumbers));
     }
 }

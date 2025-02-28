@@ -1,4 +1,4 @@
-package hendys.datastructures.priorityqueue;
+package hendys.datastructures.heaps;
 
 import java.util.ArrayList;
 import java.util.Collection;
