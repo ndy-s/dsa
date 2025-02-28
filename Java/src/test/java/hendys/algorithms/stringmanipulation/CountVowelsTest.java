@@ -7,11 +7,11 @@ public class CountVowelsTest {
 
     @Test
     public void testCountVowels() {
-        assertEquals(3, CountVowelsApp.countVowels("Hello World"));
-        assertEquals(5, CountVowelsApp.countVowels("aeiou"));
-        assertEquals(0, CountVowelsApp.countVowels("bcdfg"));
-        assertEquals(10, CountVowelsApp.countVowels("AaEeIiOoUu"));
-        assertEquals(0, CountVowelsApp.countVowels(""));
-        assertEquals(2, CountVowelsApp.countVowels("Java"));
+        assertEquals(3, CountVowels.countVowels("Hello World"));
+        assertEquals(5, CountVowels.countVowels("aeiou"));
+        assertEquals(0, CountVowels.countVowels("bcdfg"));
+        assertEquals(10, CountVowels.countVowels("AaEeIiOoUu"));
+        assertEquals(0, CountVowels.countVowels(""));
+        assertEquals(2, CountVowels.countVowels("Java"));
     }
 }

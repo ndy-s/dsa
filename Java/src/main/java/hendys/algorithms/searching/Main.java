@@ -2,7 +2,7 @@ package hendys.algorithms.searching;
 
 import java.util.Arrays;
 
-public class SearchApp {
+public class Main {
     public static void main(String[] args) {
         int[] numbers = { 7, 1, 3, 6, 5 };
 

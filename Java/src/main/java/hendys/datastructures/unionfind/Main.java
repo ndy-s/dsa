@@ -1,4 +1,4 @@
-package hendys.datastructures;
+package hendys.datastructures.unionfind;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Hello world!
  *
  */
-public class App
+public class Main
 {
     public class UnionFind {
         private int size;
@@ -77,7 +77,7 @@ public class App
     }
 
     public static void main(String[] args) {
-        App app = new App();
+        Main app = new Main();
         UnionFind uf = app.new UnionFind(10);
 
         System.out.println("Result");

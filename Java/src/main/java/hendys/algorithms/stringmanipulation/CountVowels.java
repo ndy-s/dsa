@@ -2,7 +2,7 @@ package hendys.algorithms.stringmanipulation;
 
 import java.util.Scanner;
 
-public class CountVowelsApp {
+public class CountVowels {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

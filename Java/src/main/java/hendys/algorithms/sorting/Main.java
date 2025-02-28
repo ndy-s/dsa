@@ -2,7 +2,7 @@ package hendys.algorithms.sorting;
 
 import java.util.Arrays;
 
-public class SortingApp {
+public class Main {
     public static void main(String[] args) {
         int[] bubbleSortNumbers = { 7, 3, 1, 4, 6, 2, 3 };
         var bubbleSort = new BubbleSort();
