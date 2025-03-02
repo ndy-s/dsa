@@ -23,5 +23,15 @@ public class Main {
 
         MaxHeap.heapify(heapifyNumbers);
         System.out.println(Arrays.toString(heapifyNumbers));
+
+        // K-th largest item
+        int[] kThNumbers = { 5, 3, 8, 4, 1, 2 };
+        System.out.println(MaxHeap.getKthLargest(kThNumbers, 2));
+
+        // Is max heap?
+        System.out.println("Is max heap? " + heap.isMaxHeap());
+
+        // TODO: MIN HEAP EXERCISE
+
     }
 }

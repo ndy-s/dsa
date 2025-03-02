@@ -133,4 +133,30 @@ public class Heap {
         return rightChildIndex(index) < size;
     }
 
+    public int max() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Heap is empty");
+        }
+
+        return items[0];
+    }
+
+    public boolean isMaxHeap() {
+        if (items == null || items.length == 0) {
+            return true;
+        }
+
+        for (int i = 0; i < parentIndex(items.length); i++) {
+            if (hasLeftChild(i) && items[i] < leftChildValue(i)) {
+                return false;
+            }
+
+            if (hasRightChild(i) && items[i] < rightChildValue(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
