@@ -31,7 +31,6 @@ public class ArrayStack<T> implements Stack<T> {
         data[size++] = elem;
     }
 
-    // Increase the capacity to store more elements
     private void increaseCapacity() {
         capacity *= 2;
         data = Arrays.copyOf(data, capacity);
@@ -40,16 +39,23 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T pop() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
         T elem = (T) data[--size];
         data[size] = null;
+
         return elem;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public T peek() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
         return (T) data[size - 1];
     }
 }

@@ -5,14 +5,12 @@ public class StaticArray {
     private int length;
     private int capacity;
 
-    // Constructor to initialize the array with a given capacity
     public StaticArray(int capacity) {
         this.arr = new int[capacity];
         this.capacity = capacity;
         this.length = 0;
     }
 
-    // Insert n at the next open position
     public void insertEnd(int n) {
         if (length < capacity) {
             arr[length] = n;
@@ -22,7 +20,6 @@ public class StaticArray {
         }
     }
 
-    // Remove from the last position if not empty
     public void removeEnd() {
         if (length > 0) {
             arr[length - 1] = 0;
@@ -32,7 +29,6 @@ public class StaticArray {
         }
     }
 
-    // Insert n at index i, shifting elements right
     public void insertMiddle(int i, int n) {
         if (length >= capacity) {
             System.out.println("Array is full, cannot insert");
@@ -50,7 +46,6 @@ public class StaticArray {
         length++;
     }
 
-    // Remove value at index i, shifting elements left
     public void removeMiddle(int i) {
         if (length == 0) {
             System.out.println("Array is empty, nothing to remove");
@@ -84,12 +79,15 @@ public class StaticArray {
         sa.insertEnd(1);
         sa.insertEnd(2);
         sa.insertEnd(3);
-        sa.printArr(); // Should print: 1 2 3
+        sa.printArr();
+
         sa.insertMiddle(1, 4);
-        sa.printArr(); // Should print: 1 4 2 3
+        sa.printArr();
+
         sa.removeEnd();
-        sa.printArr(); // Should print: 1 4 2
+        sa.printArr();
+
         sa.removeMiddle(1);
-        sa.printArr(); // Should print: 1 2
+        sa.printArr();
     }
 }

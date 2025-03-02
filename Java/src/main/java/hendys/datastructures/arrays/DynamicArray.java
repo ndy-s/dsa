@@ -5,14 +5,12 @@ public class DynamicArray {
     private int length;
     private int[] arr;
 
-    // Constructor
     public DynamicArray() {
         capacity = 2;
         length = 0;
         arr = new int[capacity];
     }
 
-    // Add element to the end
     public void pushBack(int n) {
         if (length == capacity) {
             resize();
@@ -21,7 +19,6 @@ public class DynamicArray {
         length++;
     }
 
-    // Double the capacity when full
     private void resize() {
         capacity *= 2;
         int[] newArr = new int[capacity];
@@ -31,7 +28,6 @@ public class DynamicArray {
         arr = newArr;
     }
 
-    // Remove the last element
     public void popBack() {
         if (length > 0) {
             length--;
@@ -39,15 +35,14 @@ public class DynamicArray {
         }
     }
 
-    // Get element at index i
     public int get(int i) {
         if (i >= 0 && i < length) {
             return arr[i];
         }
+
         throw new IndexOutOfBoundsException("Index " + i + " is out of bounds for length " + length);
     }
 
-    // Insert element n at index i (shifts elements right)
     public void insert(int i, int n) {
         if (i < 0 || i > length) {
             throw new IndexOutOfBoundsException("Index " + i + " is invalid for length " + length);
@@ -65,7 +60,6 @@ public class DynamicArray {
         length++;
     }
 
-    // Print the array
     public void print() {
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + " ");
@@ -89,8 +83,10 @@ public class DynamicArray {
         da.pushBack(2);
         da.pushBack(3);
         da.print();
+
         da.popBack();
         da.print();
+
         da.insert(0, 4);
         da.print();
     }
