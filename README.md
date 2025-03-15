@@ -1,3 +1,2 @@
-# DSA
-
-A repository for exploring, experimenting, and learning data structures and algorithms. This collection includes various algorithm implementations, problem-solving techniques, and optimizations across different domains.
+# DSA Study
+A personal repository for studying and understanding data structures and algorithms. This collection includes implementations, explanations, and problem-solving approaches to help reinforce key concepts and improve algorithmic thinking. Ideal for practice, experimentation, and deepening my DSA knowledge.
